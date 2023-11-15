@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>A New Tool for Predicting Long-distance Target Genes of Regulatory Mutations by Integrating Multi-omics Data with a case Study in Follicular Lymphoma</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a  style="text-decoration:none;" href = "https://www.ahus.no/"><img src="figures/ahhus.png" alt="ahus"> </a>
+            <a style="text-decoration:none;" href = "https://www.helse-sorost.no/"> <img src="figures/helse-sor-ost.jpg" alt="helse sorost"> </a>
+            <a style="text-decoration:none;" href="https://www.oslo-universitetssykehus.no/"> <img src="figures/oslo-universitetssykehus-ous-logo.png" alt="oslo univeristetsykehus"> </a>
+            <a style="text-decoration:none;" href="https://www.uio.no/"> <img src="figures/uio_segl_a.png" alt="oslo Universitet", href="https://www.uio.no/"> </a>
+        </div>
+        <h1>A New Tool for Predicting Long-distance Target Genes of Regulatory Mutations by Integrating Multi-omics Data with a case Study in Follicular Lymphoma</h1>
+        <nav>
+            <ul>
+                <li><a href="https://dmr-analysis.readthedocs.io/en/latest/">DMR_analysis</a></li>
+                <li><a href="https://dds-analysis.readthedocs.io/en/latest/">DDS_analysis</a></li>
+                <li><a href="https://bpb3.github.io/bpb3/">BayesPI-BAR3 </a></li>
+            
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2 class="center-align"> <strong> Authors:</strong>
+</h2>
+            <p class="center-align">
+                <br>
+               <strong> Ming Yi Yang <sup>1,3+</sup>, Omer Ali <sup>2,7+</sup>, Lorant Farkas <sup>4,7</sup>, Jenny Sofie Dragland <sup>2,7</sup>, Magnar Bjørås <sup>1,6,7</sup>, Junbai Wang <sup>5,7*</sup></strong>
+               <br>
+                <br>1. Department of Microbiology, Oslo University Hospital, Oslo, Norway
+                <br>
+                <br>2. Department of Pathology, Oslo University Hospital - Norwegian Radium Hospital, Oslo, Norway
+                <br>
+                <br>3. Department of Medical Biochemistry, Oslo University Hospital, Oslo, Norway
+                <br>
+                <br>4. Department of Pathology, Akershus University Hospital and University of Oslo, Lørenskog, Norway
+                <br>
+                <br>5. Department of Clinical Molecular Biology (EpiGen), Akershus University Hospital and University of Oslo, Lørenskog, Norway
+                <br>
+                <br>6. Department of Clinical and Molecular Medicine, Norwegian University of Science and Technology, Trondheim, Norway
+                <br>
+                <br>7. Institute of Clinical Medicine, Faculty of Medicine, University of Oslo, Campus AHUS/Oslo, Norway
+            	<br>
+                <br>
+                <br>
+                <em>	<br>+ The first 2 authors contributed equally to this article, and both should be considered first author.
+                	<br>
+                    <br>* To whom correspondence should be addressed. Email: junbai.wang@medisin.uio.no
+                </em>
+            </p>
+        </section>
+    </main>
+    <section class="abstract">
+        <h2 class="center-align">Abstract <br></h2>
+         <p class="centered-line-spacing"> <br> Mutations in DNA regulatory regions are increasingly recognized as an important driver in
+            cancer and other complex diseases. These mutations can modify gene expression by
+            impacting DNA-protein binding and epigenetic profile, such as DNA methylation in genome
+            regulatory elements. Identifying mutation hotspots associated with expression regulation and
+            disease progression in non-coding DNA remains a challenge. Unlike most existing
+            approaches of assigning a mutation score to each individual single nucleotide polymorphism
+            (SNP), a mutation block (MB)-based approach is introduced in this study to assess the impact
+            of clusters of SNPs on transcription factor-DNA binding affinity, differential expression gene
+            (DEG), and nearby DNA methylation. Two new Python packages are developed for the
+            identification of functional MBs from multiple omics dataset. The first tool, Differential
+            Methylation Region analysis tool (DMR-analysis), is used to detect differential methylation
+            region (DMR) and map it into regulatory elements. The second tool, an integrated DMR,
+            DEG, and SNP analysis tool (DDS-analysis), is applied to combine omics data for identifying
+            functional MBs and the long-distance target genes, by considering correlations between the
+            DNA methylation at regulatory regions and the activity of target-gene expression. Both tools
+            are validated in Follicular Lymphoma (FL) Cohorts, where not only known functional MBs
+            and their target genes (BCL2 and BCL6) are recovered but also novel ones (CDCA4 and
+            JAG2) are found that associate with the development of FL, link to the activity of target-gene
+            expression, and significantly correlate with the methylation of nearby DNA sequences in FL.
+            These new tools will help tremulously for the identification of regulatory mutations in cancer
+            or other diseases, by integrative analysis of multi-omics data. <br>
+
+            <br>
+            The work is supported by <a href ="https://www.helse-sorost.no/"> South-Eastern Norway Regional Health Authority</a> 
+            and <a href= "https://www.sigma2.no/"> Sigma2</a> Norwegian research infrastructure services
+        </p>
+    </section>
+
+    <section class="dmr">
+        <h2 class="center-align"> DMR_analysis <br> </h2>
+        <p class="center-align"> 
+            <strong>dmr_analysis</strong> is a software tool for differentially Methylated Regions analysis to rank significant DMRs.
+            <br> For online documentation and Github page with demos please see: <a href="https://dmr-analysis.readthedocs.io/en/latest/"> Online Documentation </a> and <a href="https://github.com/dmr-analysis/dmr_analysis">GitHub Page</a>
+            <br> The Python package contains the following pipeline tasks, and to run a task type: <span class="font">dmr_analysis task [args] </span>
+
+
+        </p>
+        <ul class="task">
+            <li><span class="font">dmr_analysis_block</span>: Predict Differentially Methylated Region (DMR) from genome-wide.</li>
+            <br><li><span class="font">dmr_combine_multChrs4rank</span>: Combine predicted DMRs/MRs from multiple chromosomes then rank the DMRs by using logistic regression model. </li>
+            <br><li><span class="font">dmr_selected4plot</span>: Plot figure and export raw/smoothed methylation data for selected DMR or MR.</li>
+            <br><li><span class="font">dmr_map2genome </span>: Map all DMR/MRs to reference genome.</li>
+            <br><li><span class="font">dmr_map2chromSegment</span>: Map all DMR/MRs to chromatin segments generated from 6 human cell lines.</li>
+            <br><li><span class="font">dmr_cal2genome_percent</span>: Calculate the percentage of DMRs intersected with predefined genomic regions such as TSS, TES, 5dist ect. </li>
+            <br><li><span class="font">dmr_cal2chromSegment_percent</span>: Calculate the percentage of DMRs intersected with chromatin segments generated from 6 human cells. </li>
+            <br><li><span class="font">dmr_percent2plot</span>: Plot the percentage of DMRs in predefined genomic or chromatin segment regions.</li>
+            <br><li><span class="font">dmr_combine2geneAnnot </span>: Combine annotations from both predefined genomic regions and chromatin segments (This function is slow and requests both genome and chromatin segment results available).</li>
+            <br><li><span class="font">dmr_exportData</span>: Plot and export data for DMRs/MRs located in specific regions (e.g., DMRs/MRs intersected with mutation block or enhancer regions). </li>
+            <br><li><span class="font">dmr_gene_annotation</span>: Clean the reference file and create genomic region files (TSS, geneBody, TES, 5dist, and intergenic) from the reference. This module is reimplemented from the <a href="https://hmst-seq.github.io/hmst/"> HMST-seq-analyzer tool</a>  </li>
+        </ul>
+
+    </section>
+    <section class="dss">
+        <h2 class="center-align"> DDS_analysis <br> </h2>
+        <p class="center-align">
+         <strong>dss_analysis </strong> tools is an integrated data analysis pipeline by considering both Differential Methylation Region (DMR) and Differentially Expressed Genes (DEG) in SNP analysis. The package is depended on some functiones from the <stong>bpb3</stong>
+        <br> For online documentation and Github page with demos please see: <a href="https://dds-analysis.readthedocs.io/en/latest/"> Online Documentation </a> and <a href="https://github.com/dmr-analysis/dds-analysis"> GitHub Page</a>
+        <br> The Python package contains the following pipeline tasks, and to run a task type: dds_analysis task [args]
+        </p>
+        <ul class="task">
+            <br><li><span class="font">bpb3summary2bed_format</span>: Convert bpb3 block summary file to a bed format file.</li>
+            <br><li><span class="font">map_block2genome</span>: Map mutation block to genomic regions.</li>
+            <br><li><span class="font">map_block2chromSegment</span>: Map mutation block to chromatin Segment regions. </li>
+            <br><li><span class="font">map_block2dmr</span>: Map mutation block to differential methylated regions. </li>
+            <br><li><span class="font">find_geneExp4block</span>: Find differential expressed genes for mutation blocks. </li>
+            <br><li><span class="font">find_block_patieintID</span>: Find patient ID for mutation blocks. </li>
+            <br><li><span class="font">combine_dmr_deg2block</span>: Combine DMR, DEG, and mutation block information together. </li>
+            <br><li><span class="font">filter_blocks</span>: Filter mutation blocks by using DMR or/and DEG condition. </li>
+            <br><li><span class="font">collect_gene_names4blocks</span>: Collect unique gene names for mutation blocks with DMR and/or DEG. </li>
+            <br><li><span class="font">check_block_gene_inTAD</span>: Check whether block and gene are in the same TAD or TAD boundary. </li>
+            <br><li><span class="font">dds_geneRanking</span>: Select top-ranked genes from final prediction. </li>
+            <br><li><span class="font">go_pathway_analysis4out_blocks_gene</span>: GO pathway analysis of genes. </li>
+            <br><li><span class="font">find_enhancer_target_genes</span>: Find enhancer and its target genes overlapping with mutation blocks that associated with selected gene. </li>
+            <br><li><span class="font">chromSegment_test4blocks</span>: Enrichment test of mutation blocks or methylation regions that associated with genes in 7 chromatin segmentations of the human genome. </li>
+            <br><li><span class="font">dTarget_methy_vs_express</span>:Predict long-distance target gene for a specific region (e.g., mutation block) based on coupling of methylation and gene expression across samples. </li>
+            <br><li><span class="font">plot_mr_vs_exp</span>: Plot DMR/MR methylation level and Gene expression for a pair of DMR and its target gene. </li>
+            <br><li><span class="font">plot_tss_enhancer_mrs</span>: Plot the average methylation level of predicted DMRs at TSS and enhancer regions by the target genes predicted from dTarget_methy_vs_express. </li>
+            <br><li><span class="font">filterDEG4bpb3</span>: Filter Differential Expressed Genes (DEG) by rratio based on the exported file from bpb3 differential_expression then export it with group mean and rratio. </li>
+            <br><li><span class="font">preprocess</span>: This module first finds DEG in TSS, 5dist regions then preprocesses data for dds_analysis. </li>
+            
+
+        </ul>
+    </section>
+
+    <section class="bayers">
+        <h2 class="center-align"> BayersPI-BAR3 <br></h2>
+     <p class="centered-line-spacing">
+       <br>
+        <strong> BayersPI-BAR3 </strong> (or bpb3) is Bayesian method for protein–DNA interaction with binding affinity Ranking in Python3.
+        <br>  
+        For package download and online documentation please see: <a href = "https://bpb3.github.io/bpb3/"> BayesPI-BAR3 GitHub Page </a>
+        <br>
+        The Python package contains the following pipeline tasks, and to run a task type: <span class="font">bpb3 task [args] </span>
+        <br>
+        </p>
+        <ul class="task">
+            <li><span class="font">differential_expression</span>: Predict differentialy expressed genes (DEG) based on two group of samples.</li>
+            <br>
+            <li><span class="font">gene_regions</span>: Extracts regions near transcription start sites of selected genes based on genCode gtf.</li>
+            <br>
+            <li><span class="font">mussd</span>: Mutation filtering based on the Space and Sample Distribution - MuSSD. </li>
+            <br>
+            <li><span class="font">highly_mutated_blocks</span>: Find blocks with significantly more mutations than would be expected. </li>
+            <br>
+            <li><span class="font">bayespi_bar</span>: BayesPI-BAR delta-dbA ranking computation for TF binding affinity affected by DNA mutation. </li>
+            <br>
+            <li><span class="font">choose_background_parameters</span>: Selects parameters for mutation background computation. </li>
+            <br>
+            <li><span class="font">background_affinity_changes</span>: Mutation background computation. </li>
+            <br>
+            <li><span class="font">affinity_change_significance_test</span>: Significant test of TF binding affinity changes between foreground and background affinity changes. </li>
+            <br>
+            <li><span class="font">parallel</span>: Run commands from the given file in parallel. </li>
+            <br>
+            <li><span class="font">make_cluster4pwm</span>: Make input PWM files for bpb3 based on clustered PWMs. </li>
+            <br>
+            <li><span class="font">bpb3selectedPWM</span>: The second level analysis of bpb3 by using the top PWMs in TF ranking after the first level analysis of bpb3 based on the clustered PWMs. </li>
+            <br>
+            <li><span class="font">run_pipeline</span>: Run full bpb3 pipeline (e.g., the first level analysis of bpb3 if clustered PWMs are used in the calculation). </li>
+            <br>
+            <li><span class="font">clean_tmp</span>: Clean temporary files from output folders. </li>
+        </ul>
+
+
+     
+    </section>
+
+
+
+
+
+    <section class="references">
+        <h2 class="center-align"> References: <br></h2>
+        <p class="center-align">
+            <br> Wang, J.B. and K. Batmanov, <em>BayesPI-BAR: a new biophysical model for characterization of
+regulatory sequence variations.</em> Nucleic Acids Research, 2015. 43(21).<br>
+<br>
+Batmanov, K., J. Delabie, and J. Wang, <em>BayesPI-BAR2: A New Python Package for Predicting
+Functional Non-coding Mutations in Cancer Patient Cohorts.</em> Front Genet, 2019. 10:
+p. 282.<br>
+
+<br>Farooq, A., et al., <em>HMST-Seq-Analyzer: A new python tool for differential methylation and
+hydroxymethylation analysis in various DNA methylation sequencing data. </em>
+Computational and structural biotechnology journal, 2020. 18: p. 2877-2889.<br>
+
+<br>Farooq, A., et al., <em>Integrating whole genome sequencing, methylation, gene expression,
+topological associated domain information in regulatory mutation prediction: A study
+of follicular lymphoma. </em>Comput Struct Biotechnol J, 2022. 20: p. 1726-1742.
+<br>
+
+<br>Yang, M., et al., <em>Identifying functional regulatory mutation blocks by integrating genome
+sequencing and transcriptome data.</em> iScience, 2023. 26(8): p. 107266.
+
+        </p>
+
+    </section>
+    <footer>
+        <p> For correnspondance please contact Junbai Wang, Email: junbai.wang@medisin.uio.no </p>
+    </footer>
+</body>
+</html>
